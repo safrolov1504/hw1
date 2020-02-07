@@ -2,7 +2,7 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        int [] inArray = new int[]{-3,2,-5, 1, 8,-3,7,14,-20,13};
+        int [] inArray = new int[]{14,2,-5, 1, 8,-3,7,13,-20,-3};
         printArray(inArray);
         firstArray(inArray);
         twoMax(inArray);
@@ -10,8 +10,8 @@ public class Main {
 
     private static void twoMax(int [] inArray){
         int max1,max2;
-        max1 = inArray[0];
-        max2 = inArray[0];
+        max1 = Integer.MIN_VALUE;
+        max2 = Integer.MIN_VALUE;
 
         System.out.println("Вторая часть:");
         for (int i = 1; i < inArray.length; i++) {
