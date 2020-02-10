@@ -6,22 +6,68 @@ import java.util.Random;
 public class SortArray {
 
     public static void main(String[] args) {
-        int [] arrayIs = new int [100000];
-        addDate(arrayIs);
-        //printArray(arrayIs);
+        int [] arrayFir = new int [20];
+        addDate(arrayFir);
+        printArray(arrayFir);
+        //удаление
+        delItime(arrayFir,5);
+
+        //добавление элемента
+        int [] arrayIs = addItime(arrayFir,13,4);
+
+        //сортировки
         bubbleSort(arrayIs);
         selectedSort(arrayIs);
         insertionSort(arrayIs);
         mergeSort(arrayIs);
         //printArray(arrayIs);
+
+        boolean flag = searchArray(arrayIs,13);
+        if(flag) System.out.println("есть число");
+            else System.out.println("Нет числа");
+
+        printArray(arrayIs);
     }
 
-    private static void mergeSort(int[] array) {
-        int [] tmp = new int [array.length];
+    private static int [] addItime(int[] arrayIs, int i, int number) {
+        int [] returnArray = new int[arrayIs.length+1];
+        for (int j = 0; j < number; j++) {
+            returnArray[j] = arrayIs[j];
+        }
+        returnArray[number] = i;
+
+        for (int j = number+1; j < returnArray.length; j++) {
+            returnArray[j] = arrayIs[j-1];
+        }
+        return returnArray;
+    }
+
+    private static void delItime(int[] arrayIs, int number) {
+        for (int i = number; i < arrayIs.length-1; i++) {
+            arrayIs[i] = arrayIs[i+1];
+        }
+        arrayIs[arrayIs.length-1] = 0;
+    }
+
+    private static boolean searchArray(int[] arrayIs, int number) {
+        for (int j = 0; j < arrayIs.length; j++) {
+            if(arrayIs[j] == number){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+    private static void mergeSort(int[] arrayTm) {
+        int [] tmp = new int [arrayTm.length];
+        int [] array = Arrays.copyOf(arrayTm,arrayTm.length);
         long startTime = System.currentTimeMillis();
-        mergeInt(array,tmp,0,array.length-1);
+        mergeInt(arrayTm,tmp,0,array.length-1);
         long timeSpent = System.currentTimeMillis() - startTime;
         System.out.println("MergeSort sort = " + timeSpent);
+        printArray(arrayTm);
     }
 
 
