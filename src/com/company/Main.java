@@ -15,13 +15,13 @@ public class Main {
 
         System.out.println("Вторая часть:");
         for (int i = 1; i < inArray.length; i++) {
-            if(inArray[i]>max1){
-                max2= max1;
+            if (inArray[i] > max1) {
+                max2 = max1;
                 max1 = inArray[i];
             }
-        }
-        if(inArray[inArray.length-1]>max2){
-            max2=inArray[inArray.length-1];
+            if (inArray[inArray.length - 1] > max2 && inArray[inArray.length - 1] < max1) {
+                max2 = inArray[inArray.length - 1];
+            }
         }
         System.out.println("max1 = "+max1);
         System.out.println("max2 = "+max2);
